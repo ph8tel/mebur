@@ -16,22 +16,27 @@ window.onload = function() {
             time = minutes
             meter = time === 1 ? "minute" : "minutes"
             billTotal = minutes * .25
+            if (billTotal % 1 === .5) {
+                billTotal += '0'
+            }
+            if (billTotal % 1 === 0) {
+                billTotal += '.00'
+
+            }
         } else {
             time = seconds
             meter = "seconds"
-            billTotal = '2 Flat rate';
+            billTotal = '2 Flat rate'
         }
-        const totalTemplate = `
-          <h2>Your total for today</h2>
-          <h3>Time: ${time} ${meter}</h3>
+        const runningTemplate = `
           <h3>Rate: .25$ / minute</h3>
-          <h2>Total: $${billTotal}</h2>
+          <h2>Amount Due: $${billTotal}</h2>
         `
-        totalDisplay.innerHTML = totalTemplate;
+        return runningTemplate;
     }
     startButton.onclick = () => {
         clearInterval(Interval);
-        Interval = setInterval(startTimer, 1000);
+        Interval = setInterval(startTimer, 10);
     }
 
     stopButton.onclick = () => {
@@ -40,13 +45,19 @@ window.onload = function() {
 
     totalButton.onclick = () => {
 
-        rideTotal(seconds, minutes);
-
         clearInterval(Interval);
+
+        let meter = minutes === 1 ? 'minute' : 'minutes';
+        const totalTemplate = `
+        <h3>Time: ${minutes} ${meter}</h3>
+        ${rideTotal(seconds, minutes)}
+      `
+        totalDisplay.innerHTML = totalTemplate;
         seconds = "00";
-        minutes = "00"
+        minutes = "00";
         minutesBlock.innerHTML = minutes;
         secondsBlock.innerHTML = seconds;
+
     }
 
     const startTimer = () => {
@@ -55,6 +66,7 @@ window.onload = function() {
             minutes++;
             seconds = 00;
             minutesBlock.innerHTML = minutes;
+            totalDisplay.innerHTML = rideTotal(seconds, minutes);
         }
         if (seconds < 9) {
             secondsBlock.innerHTML = "0" + seconds;

@@ -1,63 +1,73 @@
 body {
     margin-left: 150px;
-  }
-  .logo {
+    font-family: 'comfortaa', cursive;
+}
 
-   font-family: 'comfortaa', cursive;
-   font-size: 88px;
-   color: gray;
-   text-align: center;
-   border-bottom-style: dashed;
-   border-bottom-width: 5px;
-  }
-  
-  .meter-main {
-  
-  border-radius: 15px;
-  border-style: solid;
-  border-color: black;
-  height: 600px;
-  width: 600px;
-  background-color: #ffff00;
+#controlls {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-top: 15px;
+    border-top: dashed 5px gray;
+}
 
-  }
-  #meter-clock {
-  
-  font-family: 'Orbitron', sans-serif;
-  font-size: 80px;
-  color: red;
-  text-align: center;
-  margin-left: 5%;
-  margin-right: 5%;
-  display: grid;
-  grid-template-columns: 2fr 1fr 2fr;
-  background-color: black;
-  border-style: groove;
-  padding-top: 10px;
+button {
+    height: 100px;
+    border-radius: 3em;
+    background-color: rgb(223, 219, 219);
+}
 
+.logo {
+    font-size: 88px;
+    color: gray;
+    text-align: center;
+    border-bottom-style: dashed;
+    border-bottom-width: 5px;
+}
+
+.meter-main {
+    border-radius: 15px;
+    border-style: solid;
+    border-color: black;
+    width: 600px;
+    background-color: #ffff00;
+}
+
+#meter-clock {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 80px;
+    color: red;
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    background-color: black;
+    border-style: groove;
+    padding-top: 10px;
 }
 
 #detail-text {
-  font-size: 20px;
-  color: black;
+    font-size: 20px;
+    color: black;
 }
+
 .dual-col {
-  margin-top: 16px;
- display: grid;
- grid-template-columns: 1fr 1fr;
- margin-left: 25%;
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 25%;
 }
 
 #id-card {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  border: 4px solid grey;
-  border-radius: 5px;
-  background-color: white;
-} 
-
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border: 4px solid grey;
+    border-radius: 5px;
+    background-color: white;
+}
 
 #id-card p {
-  border-bottom: 2px solid gray;
-} 
-
+    border-bottom: 2px solid gray;
+}
