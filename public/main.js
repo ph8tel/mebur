@@ -8,6 +8,8 @@ window.onload = function() {
     const stopButton = document.getElementById('button-stop');
     const totalButton = document.getElementById('button-reset');
     const totalDisplay = document.getElementById('total');
+    const taxiImage = document.getElementById('taxi-image');
+    const title = document.getElementById('title');
 
     let Interval;
     const rideTotal = (seconds, mins) => {
@@ -25,19 +27,23 @@ window.onload = function() {
             meter = "seconds"
             billTotal = '2 Flat rate'
         }
-        const runningTemplate = `
-          <h3>Rate: .25$ / minute</h3>
-          <h2>Amount Due: $${billTotal}</h2>
-        `
+        const runningTemplate =
+            `<p>Rate: .25$ / minute</p>
+         <p>Amount Due: $${billTotal}</p>`
         return runningTemplate;
     }
     startButton.onclick = () => {
+        console.log(taxiImage.src)
+        taxiImage.src = "img/taxi-dribble.gif"
+        totalDisplay.innerHTML = '<p>Flat rate of $2.00</p><p>until minimum is met</p> '
         clearInterval(Interval);
-        Interval = setInterval(startTimer, 10);
+        Interval = setInterval(startTimer, 100);
     }
 
     stopButton.onclick = () => {
         clearInterval(Interval);
+        taxiImage.src = "img/taxi-dribble.png"
+
     }
 
     totalButton.onclick = () => {
@@ -46,10 +52,11 @@ window.onload = function() {
 
         let meter = minutes === 1 ? 'minute' : 'minutes';
         const totalTemplate = `
-        <h3>Time: ${minutes} ${meter}</h3>
+        <p>Time: ${minutes} ${meter}</p>
         ${rideTotal(seconds, minutes)}
         `
         totalDisplay.innerHTML = totalTemplate;
+        taxiImage.src = "img/taxi-dribble.png"
         seconds = "00";
         minutes = "00";
         minutesBlock.innerHTML = minutes;

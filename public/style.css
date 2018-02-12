@@ -1,6 +1,7 @@
 body {
     margin-left: 150px;
     font-family: 'comfortaa', cursive;
+    background-color: aliceblue;
 }
 
 #controlls {
@@ -11,10 +12,22 @@ body {
     border-top: dashed 5px gray;
 }
 
+#title {
+    background-color: red;
+}
+
 button {
     height: 100px;
     border-radius: 3em;
     background-color: rgb(223, 219, 219);
+}
+
+#button-start {
+    background-color: rgb(6, 192, 6);
+}
+
+#button-stop {
+    background-color: red;
 }
 
 .logo {
@@ -30,7 +43,7 @@ button {
     border-style: solid;
     border-color: black;
     width: 600px;
-    background-color: #ffff00;
+    background-color: #fecb10;
 }
 
 #meter-clock {
@@ -38,8 +51,8 @@ button {
     font-size: 80px;
     color: red;
     text-align: center;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 2%;
+    margin-right: 2%;
     display: grid;
     grid-template-columns: 2fr 1fr 2fr;
     background-color: black;
@@ -61,6 +74,7 @@ button {
 
 #id-card {
     margin-top: 30px;
+    height: 180px;
     display: grid;
     grid-template-columns: 1fr 2fr;
     border: 4px solid grey;
@@ -70,4 +84,8 @@ button {
 
 #id-card p {
     border-bottom: 2px solid gray;
+}
+
+#taxi-image {
+    height: 180px;
 }
