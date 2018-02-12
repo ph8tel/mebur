@@ -11,20 +11,17 @@ window.onload = function() {
 
     let Interval;
     const rideTotal = (seconds, mins) => {
-        let billTotal, meter, time;
+        let billTotal, meter;
         if (minutes) {
-            time = minutes
-            meter = time === 1 ? "minute" : "minutes"
+            meter = minutes === 1 ? "minute" : "minutes"
             billTotal = minutes * .25
             if (billTotal % 1 === .5) {
                 billTotal += '0'
             }
             if (billTotal % 1 === 0) {
                 billTotal += '.00'
-
             }
         } else {
-            time = seconds
             meter = "seconds"
             billTotal = '2 Flat rate'
         }
@@ -51,7 +48,7 @@ window.onload = function() {
         const totalTemplate = `
         <h3>Time: ${minutes} ${meter}</h3>
         ${rideTotal(seconds, minutes)}
-      `
+        `
         totalDisplay.innerHTML = totalTemplate;
         seconds = "00";
         minutes = "00";
