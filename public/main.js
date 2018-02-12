@@ -37,7 +37,7 @@ window.onload = function() {
         taxiImage.src = "img/taxi-dribble.gif"
         totalDisplay.innerHTML = '<p>Flat rate of $2.00</p><p>until minimum is met</p> '
         clearInterval(Interval);
-        Interval = setInterval(startTimer, 100);
+        Interval = setInterval(startTimer, 1000);
     }
 
     stopButton.onclick = () => {
