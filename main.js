@@ -1,57 +1,66 @@
 window.onload = function() {
 
     let seconds = 00;
-    let tens = 00;
-    const appendTens = document.getElementById("tens")
-    const appendSeconds = document.getElementById("seconds")
-    const buttonStart = document.getElementById('button-start');
-    const buttonStop = document.getElementById('button-stop');
-    const buttonReset = document.getElementById('button-reset');
+    let minutes = 00;
+    const secondsBlock = document.getElementById("seconds")
+    const minutesBlock = document.getElementById("minutes")
+    const startButton = document.getElementById('button-start');
+    const stopButton = document.getElementById('button-stop');
+    const totalButton = document.getElementById('button-reset');
     const totalDisplay = document.getElementById('total');
 
     let Interval;
-
-    buttonStart.onclick = () => {
+    const rideTotal = (seconds, mins) => {
+        let billTotal, meter, time;
+        if (minutes) {
+            time = minutes
+            meter = time === 1 ? "minute" : "minutes"
+            billTotal = minutes * .25
+        } else {
+            time = seconds
+            meter = "seconds"
+            billTotal = '2 Flat rate';
+        }
+        const totalTemplate = `
+          <h2>Your total for today</h2>
+          <h3>Time: ${time} ${meter}</h3>
+          <h3>Rate: .25$ / minute</h3>
+          <h2>Total: $${billTotal}</h2>
+        `
+        totalDisplay.innerHTML = totalTemplate;
+    }
+    startButton.onclick = () => {
         clearInterval(Interval);
-        Interval = setInterval(startTimer, 10);
+        Interval = setInterval(startTimer, 1000);
     }
 
-    buttonStop.onclick = () => {
-        let billTotal = seconds * .25
-        totalDisplay.innerHTML = '$' + billTotal
+    stopButton.onclick = () => {
         clearInterval(Interval);
     }
 
-    buttonReset.onclick = () => {
+    totalButton.onclick = () => {
+
+        rideTotal(seconds, minutes);
+
         clearInterval(Interval);
-        console.log(tens, seconds, 'times')
-        tens = "00";
         seconds = "00";
-        appendTens.innerHTML = tens;
-        appendSeconds.innerHTML = seconds;
+        minutes = "00"
+        minutesBlock.innerHTML = minutes;
+        secondsBlock.innerHTML = seconds;
     }
 
     const startTimer = () => {
-        tens++;
-
-        if (tens < 9) {
-            appendTens.innerHTML = "0" + tens;
+        seconds++;
+        if (seconds > 59) {
+            minutes++;
+            seconds = 00;
+            minutesBlock.innerHTML = minutes;
         }
-
-        if (tens > 9) {
-            appendTens.innerHTML = tens;
+        if (seconds < 9) {
+            secondsBlock.innerHTML = "0" + seconds;
         }
-
-        if (tens > 99) {
-            console.log("seconds");
-            seconds++;
-            appendSeconds.innerHTML = "0" + seconds;
-            tens = 0;
-            appendTens.innerHTML = "0" + 0;
-        }
-
         if (seconds > 9) {
-            appendSeconds.innerHTML = seconds;
+            secondsBlock.innerHTML = seconds;
         }
     }
 
